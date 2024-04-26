@@ -45,3 +45,6 @@ tmp/
 .vscode
 .test/trackhub/*.sizes
 .test/trackhub/out.log
+.Rproj.user
+snpArcher.Rproj
+.Rhistory

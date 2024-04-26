@@ -1,3 +1,17 @@
+# snpArcher -- standalone-qc branch
+
+Howdy y'all,  the standalone-qc branch of this project just has a few little modifications
+that Eric C. Anderson made so that the super-awesome, quick-and-dirty qc module in the
+snpArcher workflow can be run on any VCF.gz or BCF file that you happen to have, without
+having to run the whole snpArcher pipeline, and also while being quite easy to
+prepare a csv file or two to run it.
+
+This branch has a directory, `workflow/modules/qc/standalone-example` that has a BCF
+file in it with 16 individuals at 4 pieces of chromosome, and then some scaffolds, which
+should be useful for testing and demonstration.
+
+
+
 # snpArcher
 
 <img src="./docs/img/logo.png" alt="snpArcher logo" height="300"/>
