@@ -1,0 +1,2 @@
+vcf_path,genome,final_prefix,sample_info_path,excluded_scaffolds_path
+standalone-qc-example/16-chinook.vcf.gz,Otsh_V1_fragment,16-chinook,standalone-qc-example/sample-info-16-chinook.csv,standalone-qc-example/excluded-scaffolds-16-chinook.txt

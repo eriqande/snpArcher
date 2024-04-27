@@ -6,8 +6,8 @@ snpArcher workflow can be run on any VCF.gz or BCF file that you happen to have,
 having to run the whole snpArcher pipeline, and also while being quite easy to
 prepare a csv file or two to run it.
 
-This branch has a directory, `workflow/modules/qc/standalone-example` that has a BCF
-file in it with 16 individuals at 4 pieces of chromosome, and then some scaffolds, which
+This branch has a directory, `standalone-qc-example` that has a vcf.gz
+file in it with 16 chinook salmon at 4 pieces of chromosome, and then some scaffolds, which
 should be useful for testing and demonstration.
 
 

@@ -227,6 +227,7 @@ Row
 ### SNP Depth
 
 ```{r, fig.width = 5, fig.height = 5}
+
 # depth plot --------------------------------------------------------------
 #depth is read in the PCA chunk
 imiss.path <- paste0(prefix, ".imiss")
@@ -262,6 +263,10 @@ df.depth.miss <- df.depth.miss %>%
 
 
 ```{r, fig.width = 5, fig.height = 5}
+
+ggplot() + annotate("text", label = "Mapping Summary Stats Not Available Here", x = 0, y = 0)
+
+if(FALSE) {
 # bamstat plot --------------------------------------------------------------
 bamstat.path <- paste0(prefix, "_bam_sumstats.txt")
 df.bamstat <- read.table(bamstat.path, header =T)
@@ -283,6 +288,7 @@ df.depth.miss.bamstat <- df.depth.miss.bamstat %>%
     xlim(0,100)) %>% 
     ggplotly(tooltip=c("text","x","y")) 
 #)
+}
 
 ```
 

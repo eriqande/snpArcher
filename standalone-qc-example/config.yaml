@@ -1,0 +1,16 @@
+##############################
+# Variables you need to change
+##############################
+
+vcf_list: "standalone-qc-example/vcf-list.csv"  # CSV file with VCF files and genomes
+fai_path: "standalone-qc-example/fai"
+scaffolds_to_exclude: ""
+
+##############################
+# Variables you *might* need to change
+##############################
+
+## QC options ##
+nClusters: 3
+GoogleAPIKey:
+min_depth: 0.02

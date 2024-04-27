@@ -1,15 +1,30 @@
 import sys
-from pathlib import Path
-
-# Get utils. This is not great, but we can move to setup.py and install later if want
-utils_path = (Path(workflow.main_snakefile).parent.parent.parent).resolve()
-if str(utils_path) not in sys.path:
-    sys.path.append(str(utils_path))
 
 import pandas as pd
-import snparcher_utils
+
+
+vcf_table = pd.read_csv(config["vcf_list"]).set_index(["genome", "final_prefix"])
+vcf_table_noindex = pd.read_csv(config["vcf_list"])
+
+
+
+
+refgenome_list = vcf_table_noindex['genome'].tolist()
+final_prefix_list = vcf_table_noindex['final_prefix'].tolist()
+
+def get_vcf_path(wildcards):
+    return vcf_table.loc[ (wildcards.refGenome, wildcards.prefix), "vcf_path" ]
+  
+def get_sample_info_path(wildcards):
+    return vcf_table.loc[ (wildcards.refGenome, wildcards.prefix), "sample_info_path" ]
+
+
+def get_excluded_scaffolds(wildcards):
+    return vcf_table.loc[ (wildcards.refGenome, wildcards.prefix), "excluded_scaffolds_path" ]
 
 def get_coords_if_available(wildcards):
+    si_path = get_sample_info_path(wildcards)
+    samples = pd.read_csv(si_path)
     if 'lat' in samples.columns and 'long' in samples.columns:
         return "results/{refGenome}/QC/{prefix}.coords.txt"
     return []
