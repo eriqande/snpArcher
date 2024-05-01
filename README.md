@@ -1,14 +1,41 @@
 # snpArcher -- standalone-qc branch
 
-Howdy y'all,  the standalone-qc branch of this project just has a few little modifications
+Howdy y'all,  the `standalone-qc` branch of Eric's fork of this project just has a few little modifications
 that Eric C. Anderson made so that the super-awesome, quick-and-dirty qc module in the
 snpArcher workflow can be run on any VCF.gz or BCF file that you happen to have, without
-having to run the whole snpArcher pipeline, and also while being quite easy to
-prepare a csv file or two to run it.
+having to run the whole snpArcher pipeline. It is also setup so that it should be easy
+to process multiple VCF files (different species, different reference genomes) with only
+minimal configuration overhead (preparing a csv file with the paths to the VCF and the `.fai`
+files.
 
 This branch has a directory, `standalone-qc-example` that has a vcf.gz
 file in it with 16 chinook salmon at 4 pieces of chromosome, and then some scaffolds, which
 should be useful for testing and demonstration.
+
+To test this out on your system, the steps are:
+
+1.  Clone this fork of the snpArcher repo:
+    ```sh
+    # this is using the SSH address
+    git clone git@github.com:eriqande/snpArcher.git
+    ```
+2.  `cd` into the resulting snpArcher repo and switch to the `standalone-qc` branch:
+    ```sh
+    cd snpArcher
+    git checkout standalone-qc
+    ```
+3.  Dry-run the standalone qc example by running the Snakefile in the `workflow/qc` directory, like this:
+    ```sh
+    snakemake -np --cores 8 --use-conda -s workflow/modules/qc/Snakefile --configfile standalone-qc-example/config.yaml
+    ```
+    It is probably worth explaining that line a little.  It is doing a dry-run `-n` and printing
+    out the shell commands `-p`, allowing for up to 8 cores of use, and it is using conda for
+    managing software.  The Snakefile is specified using the `-s` option to be
+    `workflow/modules/qc/Snakefile` and the config file for this run is in
+    `standalone-qc-example/config.yaml`.
+    
+
+
 
 
 
