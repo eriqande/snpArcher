@@ -35,17 +35,18 @@ rule vcftools_individuals:
         "envs/vcftools_individuals.yml"
     params:
         prefix = "results/{refGenome}/QC/{prefix}",
-        min_depth = config["min_depth"]
+        min_depth = config["min_depth"],
+        ftype = get_file_type
     log:
         "logs/{refGenome}/QC/vcftools_individuals/{prefix}.txt"
     resources:
         mem_mb = lambda wildcards, attempt: attempt * 4000
     shell:
         """
-        vcftools --gzvcf {input.vcf} --FILTER-summary --out {params.prefix} &> {log}
-        vcftools --gzvcf {input.vcf} --out {params.prefix} --depth >> {log} 2>&1
-        vcftools --gzvcf {input.vcf} --out {params.prefix} --het >> {log} 2>&1
-        vcftools --gzvcf {input.vcf} --out {params.prefix} --missing-indv >> {log} 2>&1
+        vcftools {params.ftype} {input.vcf} --FILTER-summary --out {params.prefix} &> {log}
+        vcftools {params.ftype} {input.vcf} --out {params.prefix} --depth >> {log} 2>&1
+        vcftools {params.ftype} {input.vcf} --out {params.prefix} --het >> {log} 2>&1
+        vcftools {params.ftype} {input.vcf} --out {params.prefix} --missing-indv >> {log} 2>&1
         tail -n +2 {output.depth} | awk '$3>{params.min_depth} {{print $1}}' > {output.samps} 2>> {log}
         """
 

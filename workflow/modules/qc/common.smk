@@ -14,7 +14,17 @@ final_prefix_list = vcf_table_noindex['final_prefix'].tolist()
 
 def get_vcf_path(wildcards):
     return vcf_table.loc[ (wildcards.refGenome, wildcards.prefix), "vcf_path" ]
-  
+
+def get_file_type(wildcards, input):
+    if input.vcf.endswith(".bcf"):
+        return "--bcf"
+    elif input.vcf.endswith(".vcf.gz"):
+        return "--gzvcf"
+    elif input.vcf.endswith(".vcf"):
+        return "--vcf"
+    else:
+        raise ValueError("Unsupported file type. The file must end with either '.bcf' or '.vcf.gz'.")
+
 def get_sample_info_path(wildcards):
     return vcf_table.loc[ (wildcards.refGenome, wildcards.prefix), "sample_info_path" ]
 
