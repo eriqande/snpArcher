@@ -49,12 +49,16 @@ You probably should open that in a new tab so you can refer back to it.
 That file has the following YAML keys:
 
 - The `vcf_list` is the path to a CSV file that holds information about all the VCF files
-and all the reference genomes that you are using.  We will discuss it below.
+and all the reference genomes that you are using. This path must be a relative path, relative
+to whatever your current working directory should be, typically the snpArcher directory itself.
+We will discuss the format of the CSV file below.
 - The `fai_path` is the path to a directory where any fai files from the reference genomes
-  you have used are stored.  They must be named according to the entries in the
+  you have used are stored. This path must be a relative path, relative
+  to whatever your current working directory should be, typically the snpArcher directory itself.
+  The fai files themselves must be named according to the entries in the
   `genome` column of the CSV file, `vcf_list`.
 - `scaffolds_to_exclude` is the path to a file that contains scaffold names (one per line)
-  that you with to exclude from these qc analyses.
+  that you with to exclude from these qc analyses. Again this is relative to the working directory.
 
 
 ### The `vcf_list` file
