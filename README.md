@@ -35,6 +35,37 @@ To test this out on your system, the steps are:
     `standalone-qc-example/config.yaml`.
     
 
+## standalone-qc configuration
+
+Here we have a little explanation of how to configure things. We discuss this in
+the context of the examples in the `standalone-qc-example` directory.
+
+### Main config file
+
+The main config file is a simple YAML file.  The example version can be viewed
+[here](https://github.com/eriqande/snpArcher/blob/standalone-qc/standalone-qc-example/config.yaml).
+You probably should open that in a new tab so you can refer back to it.
+
+That file has the following YAML keys:
+
+- The `vcf_list` is the path to a CSV file that holds information about all the VCF files
+and all the reference genomes that you are using.  We will discuss it below.
+- The `fai_path` is the path to a directory where any fai files from the reference genomes
+  you have used are stored.  They must be named according to the entries in the
+  `genome` column of the CSV file, `vcf_list`.
+- `scaffolds_to_exclude` is the path to a file that contains scaffold names (one per line)
+  that you with to exclude from these qc analyses.
+
+
+### The `vcf_list` file
+
+This file is a CSV file. The example version can be viewed [here](https://github.com/eriqande/snpArcher/blob/standalone-qc/standalone-qc-example/vcf-list.csv).
+
+This file must be a CSV file and it should contain a header row and then an
+additional row for each VCF file that you wish to process.
+
+
+
 
 
 
