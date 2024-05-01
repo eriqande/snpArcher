@@ -64,7 +64,15 @@ This file is a CSV file. The example version can be viewed [here](https://github
 This file must be a CSV file and it should contain a header row and then an
 additional row for each VCF file that you wish to process.
 
+The five columns in this file are:
 
+- `vcf_path`:
+- `genome`:
+- `final_prefix`:
+- `sample_info_path`:
+- `excluded_scaffolds_path`:
+
+  
 
 
 
