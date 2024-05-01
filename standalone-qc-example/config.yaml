@@ -4,7 +4,7 @@
 
 vcf_list: "standalone-qc-example/vcf-list.csv"  # CSV file with VCF files and genomes
 fai_path: "standalone-qc-example/fai"
-scaffolds_to_exclude: ""
+scaffolds_to_exclude: "standalone-qc-example/excluded-scaffolds.txt"
 
 ##############################
 # Variables you *might* need to change
@@ -12,5 +12,5 @@ scaffolds_to_exclude: ""
 
 ## QC options ##
 nClusters: 3
-GoogleAPIKey:
+GoogleAPIKey: 
 min_depth: 0.02
