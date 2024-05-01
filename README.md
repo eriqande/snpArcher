@@ -66,11 +66,14 @@ additional row for each VCF file that you wish to process.
 
 The five columns in this file are:
 
-- `vcf_path`:
-- `genome`:
-- `final_prefix`:
-- `sample_info_path`:
-- `excluded_scaffolds_path`:
+-  `vcf_path`: The path to the VCF file.
+-  `genome`: The name of the reference genome.  This gets used in the output directory names, and
+   the workflow also looks for the fai file in the `fai_path` + `genome` + `fna.fai`.
+-  `final_prefix`: This is the tag/name/prefix given to the output files.  You will typically want
+   this to be the species name (or the project name) etc.
+-  `sample_info_path`: the path to the sample information file.  That file is a TSV file.  _See below_.
+-  `excluded_scaffolds_path`: the path to the file holding the scaffolds that should be excluded
+   from these analyses.  
 
   
 
